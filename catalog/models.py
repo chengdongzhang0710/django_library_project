@@ -22,3 +22,15 @@ class Author(models.Model):
 
     def __str__(self):
         return f'{self.last_name}, {self.first_name}'
+
+
+class BookImage(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    url = models.CharField(max_length=255)
+
+    class Meta:
+        verbose_name = 'Book Image'
+        verbose_name_plural = 'Book Images'
+
+    def __str__(self):
+        return self.book.title
